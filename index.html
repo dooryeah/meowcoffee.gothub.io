@@ -4,6 +4,13 @@
     <meta charset="UTF-8">
     <title>喵宿咖啡厅 · Meow Inn Café</title>
     <style>
+        .nav-links {
+    display: none; /* 默认隐藏 */
+}
+.nav-links.show {
+    display: flex; /* 登录后显示 */
+}
+
         body {
             margin: 0;
             font-family: "Segoe UI", sans-serif;
@@ -87,15 +94,21 @@
 <body>
 
     <!-- 顶部导航栏 -->
-    <div class="navbar">
-        <img src="/meowcoffee.github.io/images/logo.png">
-        <div class="nav-links">
-            <a href="#">主页</a>
-            <a href="#">加入服务器</a>
-            <a href="#">玩家社区</a>
-            <a href="#">关于</a>
-        </div>
+   <div class="navbar">
+    <img src="./images/logo.png" alt="喵宿服务器 Logo">
+
+    <div class="nav-links" id="navLinks">
+        <a href="#">主页</a>
+        <a href="#">加入服务器</a>
+        <a href="#">玩家社区</a>
+        <a href="#">关于</a>
     </div>
+
+    <div class="nav-auth">
+        <a class="login-btn" onclick="login()">登录</a>
+        <a class="register-btn" onclick="register()">注册</a>
+    </div>
+</div>
 
     <!-- 首页大图（你可以替换成自己的图片） -->
     <div class="banner" style="background-image: url('images/home_banner.jpg');"></div>
@@ -107,12 +120,23 @@
             <p>我们真心希望，想要来一次永不落幕的MC</p>
             <p>如果屏幕前的你也有这样的想法以及热情，请一定要加入我们！</p>
 
-            <a class="join-btn">点击复制服务器地址</a>
+           <a class="join-btn" onclick="copyQQ()">点击复制服务器 QQ 审核群号</a>
+
+<script>
+function copyQQ() {
+    const qq = "1082948381"; // ← 这里换成你的 QQ 群号
+    navigator.clipboard.writeText(qq).then(() => {
+        alert("已复制 QQ 审核群号：" + qq);
+    });
+}
+</script>
+
         </div>
     </div>
 
 </body>
 </html>
+
 
 
 
