@@ -5,132 +5,124 @@
     <title>玩家简介 - 喵宿咖啡厅</title>
 
     <style>
-         body {
-     margin: 0;
-     font-family: "Segoe UI", "PingFang SC", "Microsoft YaHei", sans-serif;
-     background: #f4f8ff;
- }
+        body {
+            margin: 0;
+            font-family: "Segoe UI", sans-serif;
+            background: #f4f8ff;
+        }
 
- /* 顶部导航栏 */
- .navbar {
-     display: flex;
-     align-items: center;
-     justify-content: space-between;
-     padding: 12px 40px;
-     background: #ffffffcc;
-     backdrop-filter: blur(10px);
-     position: fixed;
-     width: 100%;
-     top: 0;
-     z-index: 9999;
-     box-shadow: 0 2px 10px rgba(0,0,0,0.05);
- }
- .navbar img {
-     height: 48px;
-     filter: drop-shadow(0 0 4px rgba(0,0,0,0.2));
- }
- .nav-links {
-     display: flex;
- }
- .nav-links a {
-     margin-left: 24px;
-     text-decoration: none;
-     color: #4a6fa5;
-     font-weight: 600;
-     transition: 0.2s;
- }
- .nav-links a:hover {
-     color: #1e4f91;
- }
- .nav-auth {
-     display: flex;
-     align-items: center;
-     gap: 12px;
- }
- .logout-btn {
-     padding: 8px 14px;
-     border-radius: 10px;
-     border: 1px solid #6aa6ff;
-     background: #6aa6ff;
-     color: #fff;
-     cursor: pointer;
-     transition: 0.2s;
- }
- .logout-btn:hover {
-     background: #4f8df0;
-     border-color: #4f8df0;
- }
+        /* 顶部导航栏 */
+        .navbar {
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            padding: 12px 40px;
+            background: #ffffffcc;
+            backdrop-filter: blur(10px);
+            position: fixed;
+            width: 100%;
+            top: 0;
+            z-index: 9999;
+            box-shadow: 0 2px 10px rgba(0,0,0,0.05);
+        }
 
- /* 顶部大图 */
- .banner {
-     width: 100%;
-     height: 420px;
-     background-size: cover;
-     background-position: center;
-     margin-top: 70px;
-     border-bottom: 4px solid #dbe7ff;
- }
+            .navbar img {
+                height: 48px;
+                filter: drop-shadow(0 0 4px rgba(0,0,0,0.2));
+            }
 
- /* 内容区 */
- .content {
-     padding: 120px 40px 40px 40px;
-     max-width: 1100px;
-     margin: 0 auto;
- }
- h1, h2 {
-     text-align: center;
-     color: #4a6fa5;
-     margin-bottom: 20px;
- }
+        .nav-links {
+            display: flex;
+        }
 
- /* 卡片 */
- .card {
-     background: white;
-     padding: 30px;
-     border-radius: 16px;
-     box-shadow: 0 4px 20px rgba(0,0,0,0.08);
-     margin-bottom: 24px;
- }
+            .nav-links a {
+                margin-left: 24px;
+                text-decoration: none;
+                color: #4a6fa5;
+                font-weight: 600;
+                transition: 0.2s;
+            }
 
- /* 按钮 */
- .join-btn {
-     display: inline-block;
-     margin-top: 16px;
-     padding: 12px 28px;
-     background: #6aa6ff;
-     color: white;
-     border-radius: 10px;
-     text-decoration: none;
-     font-size: 16px;
-     transition: 0.2s;
-     cursor: pointer;
- }
- .join-btn:hover {
-     background: #4f8df0;
- }
+                .nav-links a:hover {
+                    color: #1e4f91;
+                }
+
+        .nav-auth {
+            display: flex;
+            gap: 16px;
+        }
+
+            .nav-auth a {
+                text-decoration: none;
+                color: #4a6fa5;
+                font-weight: 600;
+            }
+
+        /* 内容区 */
+        .content {
+            padding: 120px 40px 40px 40px;
+            max-width: 900px;
+            margin: 0 auto;
+        }
+
+        h1 {
+            text-align: center;
+            color: #4a6fa5;
+            margin-bottom: 30px;
+        }
+
+        /* 玩家简介卡片 */
+        .profile-card {
+            background: white;
+            padding: 30px;
+            border-radius: 20px;
+            box-shadow: 0 4px 20px rgba(0,0,0,0.08);
+            text-align: center;
+        }
+
+            .profile-card img {
+                width: 120px;
+                height: 120px;
+                border-radius: 16px;
+                margin-bottom: 20px;
+            }
+
+        .profile-name {
+            font-size: 24px;
+            font-weight: bold;
+            color: #4a6fa5;
+            margin-bottom: 10px;
+        }
+
+        .profile-desc {
+            font-size: 16px;
+            color: #555;
+            line-height: 1.6;
+            white-space: pre-line;
+        }
     </style>
 </head>
 <body>
 
-<script>
-    // 未登录自动跳转到登录页（放在最前面，避免闪烁）
-    if (!localStorage.getItem("loggedInUser")) {
+    <script>
+        // 未登录自动跳转到登录页（放在最前面，避免闪烁）
+        if (!localStorage.getItem("loggedInUser")) {
         window.location.href = "login.html";
-    }
-</script>
+        }
+    </script>
 
-<div class="navbar">
-    <img src="./images/logo.png" alt="Logo">
-    <div class="nav-links">
-        <a href="index.html">主页</a>
-        <a href="player-profile.html">玩家简介</a>
-        <a href="#">关于</a>
+    <div class="navbar">
+        <img src="./images/logo.png" alt="Logo">
+        <div class="nav-links">
+            <a href="index.html">主页</a>
+            <a href="player-profile.html">玩家简介</a>
+            <a href="#">关于</a>
+        </div>
+        <div class="nav-auth" id="navAuth">
+            <span id="welcomeText" style="color:#2f5fa8; font-weight:600;"></span>
+            <button class="logout-btn" id="logoutBtn" onclick="logout()">退出登录</button>
+        </div>
     </div>
-    <div class="nav-auth" id="navAuth">
-        <span id="welcomeText" style="color:#2f5fa8; font-weight:600;"></span>
-        <button class="logout-btn" id="logoutBtn" onclick="logout()">退出登录</button>
-    </div>
-</div>
 
     <!-- 首页大图 -->
     <div class="banner" style="background-image: url('images/home_banner.jpg');"></div>
@@ -138,18 +130,18 @@
     <!-- 内容区 -->
     <div class="content">
         <!-- 手动玩家头像展示 -->
-<div class="card">
-    <h2>玩家展示</h2>
+        <div class="card">
+            <h2>玩家展示</h2>
 
-    <div style="
+            <div style="
         display: flex;
         gap: 20px;
         flex-wrap: wrap;
         justify-content: center;
         margin-top: 20px;
     ">
-        <!-- 玩家 1 -->
-        <div style="
+                <!-- 玩家 1 -->
+                <div style="
             width: 120px;
             background: white;
             padding: 15px;
@@ -157,13 +149,13 @@
             text-align: center;
             box-shadow: 0 4px 20px rgba(0,0,0,0.08);
         ">
-            <img src="https://mc-heads.net/avatar/Akari_desu"
-                 style="width: 80px; height: 80px; border-radius: 10px;">
-            <p>Akari_desu</p>
-        </div>
+                    <img src="https://mc-heads.net/avatar/Akari_desu"
+                         style="width: 80px; height: 80px; border-radius: 10px;">
+                    <p>Akari_desu</p>
+                </div>
 
-        <!-- 玩家 2 -->
-        <div style="
+                <!-- 玩家 2 -->
+                <div style="
             width: 120px;
             background: white;
             padding: 15px;
@@ -171,13 +163,13 @@
             text-align: center;
             box-shadow: 0 4px 20px rgba(0,0,0,0.08);
         ">
-            <img src="https://mc-heads.net/avatar/mengnai123"
-                 style="width: 80px; height: 80px; border-radius: 10px;">
-            <p>mengnai123</p>
-        </div>
+                    <img src="https://mc-heads.net/avatar/mengnai123"
+                         style="width: 80px; height: 80px; border-radius: 10px;">
+                    <p>mengnai123</p>
+                </div>
 
-        <!-- 玩家 3 -->
-        <div style="
+                <!-- 玩家 3 -->
+                <div style="
             width: 120px;
             background: white;
             padding: 15px;
@@ -185,13 +177,13 @@
             text-align: center;
             box-shadow: 0 4px 20px rgba(0,0,0,0.08);
         ">
-            <img src="https://mc-heads.net/avatar/Dooryeah730"
-                 style="width: 80px; height: 80px; border-radius: 10px;">
-            <p>Dooryeah730</p>
-        </div>
+                    <img src="https://mc-heads.net/avatar/Dooryeah730"
+                         style="width: 80px; height: 80px; border-radius: 10px;">
+                    <p>Dooryeah730</p>
+                </div>
 
-        <!-- 玩家 4 -->
-        <div style="
+                <!-- 玩家 4 -->
+                <div style="
             width: 120px;
             background: white;
             padding: 15px;
@@ -199,27 +191,13 @@
             text-align: center;
             box-shadow: 0 4px 20px rgba(0,0,0,0.08);
         ">
-            <img src="https://mc-heads.net/avatar/YuriRina"
-                 style="width: 80px; height: 80px; border-radius: 10px;">
-            <p>YuriRina</p>
-        </div>
-        
-            <!-- 玩家 5 -->
-        <div style="
-            width: 120px;
-            background: white;
-            padding: 15px;
-            border-radius: 16px;
-            text-align: center;
-            box-shadow: 0 4px 20px rgba(0,0,0,0.08);
-        ">
-            <img src="https://mc-heads.net/avatar/huazai111"
-                 style="width: 80px; height: 80px; border-radius: 10px;">
-            <p>huazai111</p>
-        </div>
+                    <img src="https://mc-heads.net/avatar/YuriRina"
+                         style="width: 80px; height: 80px; border-radius: 10px;">
+                    <p>YuriRina</p>
+                </div>
 
-         <!-- 玩家 6 -->
-        <div style="
+                <!-- 玩家 5 -->
+                <div style="
             width: 120px;
             background: white;
             padding: 15px;
@@ -227,13 +205,13 @@
             text-align: center;
             box-shadow: 0 4px 20px rgba(0,0,0,0.08);
         ">
-            <img src="https://mc-heads.net/avatar/ninesuncwc"
-                 style="width: 80px; height: 80px; border-radius: 10px;">
-            <p>ninesuncwc</p>
-        </div>
+                    <img src="https://mc-heads.net/avatar/huazai111"
+                         style="width: 80px; height: 80px; border-radius: 10px;">
+                    <p>huazai111</p>
+                </div>
 
-         <!-- 玩家 7 -->
-        <div style="
+                <!-- 玩家 6 -->
+                <div style="
             width: 120px;
             background: white;
             padding: 15px;
@@ -241,26 +219,13 @@
             text-align: center;
             box-shadow: 0 4px 20px rgba(0,0,0,0.08);
         ">
-            <img src="https://mc-heads.net/avatar/everynum"
-                 style="width: 80px; height: 80px; border-radius: 10px;">
-            <p>everynum</p>
-        </div>
-         <!-- 玩家 8 -->
-        <div style="
-            width: 120px;
-            background: white;
-            padding: 15px;
-            border-radius: 16px;
-            text-align: center;
-            box-shadow: 0 4px 20px rgba(0,0,0,0.08);
-        ">
-            <img src="https://mc-heads.net/avatar/Zi__Min"
-                 style="width: 80px; height: 80px; border-radius: 10px;">
-            <p>TheQuietStarry</p>
-        </div>
+                    <img src="https://mc-heads.net/avatar/ninesuncwc"
+                         style="width: 80px; height: 80px; border-radius: 10px;">
+                    <p>ninesuncwc</p>
+                </div>
 
-        <!-- 玩家 9 -->
-        <div style="
+                <!-- 玩家 7 -->
+                <div style="
             width: 120px;
             background: white;
             padding: 15px;
@@ -268,13 +233,26 @@
             text-align: center;
             box-shadow: 0 4px 20px rgba(0,0,0,0.08);
         ">
-            <img src="https://mc-heads.net/avatar/Serein2K"
-                 style="width: 80px; height: 80px; border-radius: 10px;">
-            <p>Serein2K</p>
-        </div>
+                    <img src="https://mc-heads.net/avatar/everynum"
+                         style="width: 80px; height: 80px; border-radius: 10px;">
+                    <p>everynum</p>
+                </div>
+                <!-- 玩家 8 -->
+                <div style="
+            width: 120px;
+            background: white;
+            padding: 15px;
+            border-radius: 16px;
+            text-align: center;
+            box-shadow: 0 4px 20px rgba(0,0,0,0.08);
+        ">
+                    <img src="https://mc-heads.net/avatar/Zi__Min"
+                         style="width: 80px; height: 80px; border-radius: 10px;">
+                    <p>TheQuietStarry</p>
+                </div>
 
-        <!-- 玩家 10 -->
-        <div style="
+                <!-- 玩家 9 -->
+                <div style="
             width: 120px;
             background: white;
             padding: 15px;
@@ -282,13 +260,13 @@
             text-align: center;
             box-shadow: 0 4px 20px rgba(0,0,0,0.08);
         ">
-            <img src="https://mc-heads.net/avatar/CYHsama"
-                 style="width: 80px; height: 80px; border-radius: 10px;">
-            <p>CYHsama</p>
-        </div>
+                    <img src="https://mc-heads.net/avatar/Serein2K"
+                         style="width: 80px; height: 80px; border-radius: 10px;">
+                    <p>Serein2K</p>
+                </div>
 
-         <!-- 玩家 11 -->
-        <div style="
+                <!-- 玩家 10 -->
+                <div style="
             width: 120px;
             background: white;
             padding: 15px;
@@ -296,13 +274,13 @@
             text-align: center;
             box-shadow: 0 4px 20px rgba(0,0,0,0.08);
         ">
-            <img src="https://mc-heads.net/avatar/un_vagrant"
-                 style="width: 80px; height: 80px; border-radius: 10px;">
-            <p>un_vagrant</p>
-        </div>
+                    <img src="https://mc-heads.net/avatar/CYHsama"
+                         style="width: 80px; height: 80px; border-radius: 10px;">
+                    <p>CYHsama</p>
+                </div>
 
-        <!-- 玩家 12 -->
-        <div style="
+                <!-- 玩家 11 -->
+                <div style="
             width: 120px;
             background: white;
             padding: 15px;
@@ -310,13 +288,13 @@
             text-align: center;
             box-shadow: 0 4px 20px rgba(0,0,0,0.08);
         ">
-            <img src="https://mc-heads.net/avatar/JIANFFN"
-                 style="width: 80px; height: 80px; border-radius: 10px;">
-            <p>JIANFFN</p>
-        </div>
+                    <img src="https://mc-heads.net/avatar/un_vagrant"
+                         style="width: 80px; height: 80px; border-radius: 10px;">
+                    <p>un_vagrant</p>
+                </div>
 
-        <!-- 玩家 13 -->
-        <div style="
+                <!-- 玩家 12 -->
+                <div style="
             width: 120px;
             background: white;
             padding: 15px;
@@ -324,13 +302,13 @@
             text-align: center;
             box-shadow: 0 4px 20px rgba(0,0,0,0.08);
         ">
-            <img src="https://mc-heads.net/avatar/Tling777"
-                 style="width: 80px; height: 80px; border-radius: 10px;">
-            <p>Tling777</p>
-        </div>
+                    <img src="https://mc-heads.net/avatar/JIANFFN"
+                         style="width: 80px; height: 80px; border-radius: 10px;">
+                    <p>JIANFFN</p>
+                </div>
 
-        <!-- 玩家 14 -->
-        <div style="
+                <!-- 玩家 13 -->
+                <div style="
             width: 120px;
             background: white;
             padding: 15px;
@@ -338,13 +316,13 @@
             text-align: center;
             box-shadow: 0 4px 20px rgba(0,0,0,0.08);
         ">
-            <img src="https://mc-heads.net/avatar/Tek1t_"
-                 style="width: 80px; height: 80px; border-radius: 10px;">
-            <p>Tek1t_</p>
-        </div>
+                    <img src="https://mc-heads.net/avatar/Tling777"
+                         style="width: 80px; height: 80px; border-radius: 10px;">
+                    <p>Tling777</p>
+                </div>
 
-        <!-- 玩家 15 -->
-        <div style="
+                <!-- 玩家 14 -->
+                <div style="
             width: 120px;
             background: white;
             padding: 15px;
@@ -352,13 +330,13 @@
             text-align: center;
             box-shadow: 0 4px 20px rgba(0,0,0,0.08);
         ">
-            <img src="https://mc-heads.net/avatar/YGDAY"
-                 style="width: 80px; height: 80px; border-radius: 10px;">
-            <p>YGDAY</p>
-        </div>
+                    <img src="https://mc-heads.net/avatar/Tek1t_"
+                         style="width: 80px; height: 80px; border-radius: 10px;">
+                    <p>Tek1t_</p>
+                </div>
 
-        <!-- 玩家 16 -->
-        <div style="
+                <!-- 玩家 15 -->
+                <div style="
             width: 120px;
             background: white;
             padding: 15px;
@@ -366,13 +344,13 @@
             text-align: center;
             box-shadow: 0 4px 20px rgba(0,0,0,0.08);
         ">
-            <img src="https://mc-heads.net/avatar/yangyang_xl"
-                 style="width: 80px; height: 80px; border-radius: 10px;">
-            <p>yangyang_xl</p>
-        </div>
+                    <img src="https://mc-heads.net/avatar/YGDAY"
+                         style="width: 80px; height: 80px; border-radius: 10px;">
+                    <p>YGDAY</p>
+                </div>
 
-         <!-- 玩家 17 -->
-        <div style="
+                <!-- 玩家 16 -->
+                <div style="
             width: 120px;
             background: white;
             padding: 15px;
@@ -380,13 +358,13 @@
             text-align: center;
             box-shadow: 0 4px 20px rgba(0,0,0,0.08);
         ">
-            <img src="https://mc-heads.net/avatar/xialuoawa"
-                 style="width: 80px; height: 80px; border-radius: 10px;">
-            <p>xialuoawa</p>
-        </div>
+                    <img src="https://mc-heads.net/avatar/yangyang_xl"
+                         style="width: 80px; height: 80px; border-radius: 10px;">
+                    <p>yangyang_xl</p>
+                </div>
 
-        <!-- 玩家 18 -->
-        <div style="
+                <!-- 玩家 17 -->
+                <div style="
             width: 120px;
             background: white;
             padding: 15px;
@@ -394,13 +372,13 @@
             text-align: center;
             box-shadow: 0 4px 20px rgba(0,0,0,0.08);
         ">
-            <img src="https://mc-heads.net/avatar/Harutoki"
-                 style="width: 80px; height: 80px; border-radius: 10px;">
-            <p>Harutoki</p>
-        </div>
+                    <img src="https://mc-heads.net/avatar/xialuoawa"
+                         style="width: 80px; height: 80px; border-radius: 10px;">
+                    <p>xialuoawa</p>
+                </div>
 
-        <!-- 玩家 19 -->
-        <div style="
+                <!-- 玩家 18 -->
+                <div style="
             width: 120px;
             background: white;
             padding: 15px;
@@ -408,13 +386,13 @@
             text-align: center;
             box-shadow: 0 4px 20px rgba(0,0,0,0.08);
         ">
-            <img src="https://mc-heads.net/avatar/WYT"
-                 style="width: 80px; height: 80px; border-radius: 10px;">
-            <p>WYT</p>
-        </div>
+                    <img src="https://mc-heads.net/avatar/Harutoki"
+                         style="width: 80px; height: 80px; border-radius: 10px;">
+                    <p>Harutoki</p>
+                </div>
 
-        <!-- 玩家 20 -->
-        <div style="
+                <!-- 玩家 19 -->
+                <div style="
             width: 120px;
             background: white;
             padding: 15px;
@@ -422,13 +400,13 @@
             text-align: center;
             box-shadow: 0 4px 20px rgba(0,0,0,0.08);
         ">
-            <img src="https://mc-heads.net/avatar/bro_Yummy"
-                 style="width: 80px; height: 80px; border-radius: 10px;">
-            <p>bro_Yummy</p>
-        </div>
+                    <img src="https://mc-heads.net/avatar/WYT"
+                         style="width: 80px; height: 80px; border-radius: 10px;">
+                    <p>WYT</p>
+                </div>
 
-         <!-- 玩家 21 -->
-        <div style="
+                <!-- 玩家 20 -->
+                <div style="
             width: 120px;
             background: white;
             padding: 15px;
@@ -436,27 +414,13 @@
             text-align: center;
             box-shadow: 0 4px 20px rgba(0,0,0,0.08);
         ">
-            <img src="https://mc-heads.net/avatar/lindilinlin"
-                 style="width: 80px; height: 80px; border-radius: 10px;">
-            <p>lindilinlin</p>
-        </div>
-        
-         <!-- 玩家 22 -->
-        <div style="
-            width: 120px;
-            background: white;
-            padding: 15px;
-            border-radius: 16px;
-            text-align: center;
-            box-shadow: 0 4px 20px rgba(0,0,0,0.08);
-        ">
-            <img src="https://mc-heads.net/avatar/mcxmy"
-                 style="width: 80px; height: 80px; border-radius: 10px;">
-            <p>mcxmy</p>
-        </div>
+                    <img src="https://mc-heads.net/avatar/bro_Yummy"
+                         style="width: 80px; height: 80px; border-radius: 10px;">
+                    <p>bro_Yummy</p>
+                </div>
 
-         <!-- 玩家 23 -->
-        <div style="
+                <!-- 玩家 21 -->
+                <div style="
             width: 120px;
             background: white;
             padding: 15px;
@@ -464,12 +428,40 @@
             text-align: center;
             box-shadow: 0 4px 20px rgba(0,0,0,0.08);
         ">
-            <img src="https://mc-heads.net/avatar/Meukr"
-                 style="width: 80px; height: 80px; border-radius: 10px;">
-            <p>Meukr</p>
+                    <img src="https://mc-heads.net/avatar/lindilinlin"
+                         style="width: 80px; height: 80px; border-radius: 10px;">
+                    <p>lindilinlin</p>
+                </div>
+
+                <!-- 玩家 22 -->
+                <div style="
+            width: 120px;
+            background: white;
+            padding: 15px;
+            border-radius: 16px;
+            text-align: center;
+            box-shadow: 0 4px 20px rgba(0,0,0,0.08);
+        ">
+                    <img src="https://mc-heads.net/avatar/mcxmy"
+                         style="width: 80px; height: 80px; border-radius: 10px;">
+                    <p>mcxmy</p>
+                </div>
+
+                <!-- 玩家 23 -->
+                <div style="
+            width: 120px;
+            background: white;
+            padding: 15px;
+            border-radius: 16px;
+            text-align: center;
+            box-shadow: 0 4px 20px rgba(0,0,0,0.08);
+        ">
+                    <img src="https://mc-heads.net/avatar/Meukr"
+                         style="width: 80px; height: 80px; border-radius: 10px;">
+                    <p>Meukr</p>
+                </div>
+            </div>
         </div>
-    </div>
-</div>
 
         <div class="card">
             <h1>欢迎来到喵宿咖啡厅</h1>
@@ -486,10 +478,10 @@
         updateNav();
 
         function copyQQ() {
-            const qq = "1082948381";
-            navigator.clipboard.writeText(qq).then(() => {
-                alert("已复制 QQ 审核群号：" + qq);
-            });
+        const qq = "1082948381";
+        navigator.clipboard.writeText(qq).then(() => {
+        alert("已复制 QQ 审核群号：" + qq);
+        });
         }
     </script>
 
