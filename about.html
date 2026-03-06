@@ -8,6 +8,15 @@
             margin: 0;
             font-family: "Segoe UI", "PingFang SC", "Microsoft YaHei", sans-serif;
             background: #f4f8ff;
+         }
+        body::before {
+            content: "";
+            position: fixed;
+            inset: 0;
+            background: url('images/about_bg.jpg') center/cover no-repeat;
+            opacity: 0.25; /* 调整透明度 0~1 */
+            pointer-events: none;
+            z-index: -1;
         }
         .navbar {
             display: flex; align-items: center; justify-content: space-between;
@@ -134,6 +143,7 @@
     </script>
 </body>
 </html>
+
 
 
 
