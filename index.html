@@ -3,128 +3,46 @@
 <head>
     <meta charset="UTF-8">
     <title>喵宿咖啡厅 · Meow Inn Café</title>
-
+    <meta name="viewport" content="width=device-width,initial-scale=1">
     <style>
-        body {
-            margin: 0;
-            font-family: "Segoe UI", sans-serif;
-            background: #f4f8ff;
-        }
-
-        /* 顶部导航栏 */
-        .navbar {
-            display: flex;
-            align-items: center;
-            justify-content: space-between;
-            padding: 12px 40px;
-            background: #ffffffcc;
-            backdrop-filter: blur(10px);
-            position: fixed;
-            width: 100%;
-            top: 0;
-            z-index: 9999;
-            box-shadow: 0 2px 10px rgba(0,0,0,0.05);
-        }
-
-        .navbar img {
-            height: 48px;
-            filter: drop-shadow(0 0 4px rgba(0,0,0,0.2));
-        }
-
-        /* 登录后显示导航栏 */
-        .nav-links {
-            display: none;
-        }
-        .nav-links.show {
-            display: flex;
-        }
-
-        .nav-links a {
-            margin-left: 24px;
-            text-decoration: none;
-            color: #4a6fa5;
-            font-weight: 600;
-            transition: 0.2s;
-        }
-
-        .nav-links a:hover {
-            color: #1e4f91;
-        }
-
-        /* 登录/注册按钮 */
-        .nav-auth {
-            display: flex;
-            gap: 16px;
-        }
-
-        .nav-auth a {
-            text-decoration: none;
-            color: #4a6fa5;
-            font-weight: 600;
-        }
-
-        /* 顶部大图 Banner */
-        .banner {
-            width: 100%;
-            height: 420px;
-            background-size: cover;
-            background-position: center;
-            margin-top: 70px;
-            border-bottom: 4px solid #dbe7ff;
-            pointer-events: none;
-        }
-
-        /* 内容区 */
-        .content {
-            padding: 40px;
-            text-align: center;
-        }
-
-        .card {
-            background: white;
-            padding: 30px;
-            border-radius: 16px;
-            max-width: 800px;
-            margin: 0 auto;
-            box-shadow: 0 4px 20px rgba(0,0,0,0.08);
-        }
-
-        .join-btn {
-            display: inline-block;
-            margin-top: 20px;
-            padding: 12px 28px;
-            background: #6aa6ff;
-            color: white;
-            border-radius: 10px;
-            text-decoration: none;
-            font-size: 18px;
-            transition: 0.2s;
-        }
-
-        .join-btn:hover {
-            background: #4f8df0;
-        }
+        body { margin:0; font-family:"Segoe UI",sans-serif; background:#f4f8ff; }
+        .navbar { display:flex; align-items:center; justify-content:space-between; padding:12px 28px; background:#ffffffcc; backdrop-filter:blur(8px); position:fixed; width:100%; top:0; z-index:999; box-shadow:0 2px 8px rgba(0,0,0,0.06); }
+        .navbar img { height:44px; }
+        .nav-links { display:flex; gap:18px; align-items:center; }
+        .nav-links a { text-decoration:none; color:#2f5fa8; font-weight:600; }
+        .nav-auth { display:flex; gap:12px; align-items:center; }
+        .banner { height:320px; background-image:url('images/home_banner.jpg'); background-size:cover; background-position:center; margin-top:70px; border-bottom:4px solid #dbe7ff; }
+        .content { padding:36px; max-width:1100px; margin:0 auto; }
+        .card { background:white; padding:20px; border-radius:14px; box-shadow:0 6px 20px rgba(0,0,0,0.06); margin-bottom:20px; }
+        .players-grid { display:flex; gap:18px; flex-wrap:wrap; justify-content:center; margin-top:12px; }
+        .player-tile { width:120px; text-align:center; background:#fff; padding:12px; border-radius:12px; box-shadow:0 4px 16px rgba(0,0,0,0.06); }
+        .player-tile img { width:80px; height:80px; border-radius:10px; display:block; margin:0 auto 8px; }
+        .join-btn { display:inline-block; padding:10px 18px; background:#6aa6ff; color:#fff; border-radius:10px; text-decoration:none; font-weight:600; }
+        .logout-btn { cursor:pointer; color:#d9534f; font-weight:700; text-decoration:underline; background:none; border:none; padding:0; }
     </style>
 </head>
-
 <body>
 
-    <!-- 顶部导航栏 -->
-    <div class="navbar">
-        <img src="./images/logo.png" alt="喵宿服务器 Logo">
+<script>
+    // 未登录自动跳转到登录页（放在最前面，避免闪烁）
+    if (!localStorage.getItem("loggedInUser")) {
+        window.location.href = "login.html";
+    }
+</script>
 
-        <div class="nav-links" id="navLinks">
-            <a href="#">主页</a>
-            <a href="#">加入服务器</a>
-            <a href="player-community.html">玩家社区</a>
-            <a href="#">关于</a>
-        </div>
-
-        <div class="nav-auth" id="navAuth">
-            <a href="login.html">登录</a>
-            <a href="register.html">注册</a>
-        </div>
+<div class="navbar">
+    <img src="./images/logo.png" alt="Logo">
+    <div class="nav-links">
+        <a href="index.html">主页</a>
+        <a href="player-profile.html">玩家简介</a>
+        <a href="#">加入服务器</a>
+        <a href="#">关于</a>
     </div>
+    <div class="nav-auth" id="navAuth">
+        <span id="welcomeText" style="color:#2f5fa8; font-weight:600;"></span>
+        <button class="logout-btn" id="logoutBtn" onclick="logout()">退出登录</button>
+    </div>
+</div>
 
     <!-- 首页大图 -->
     <div class="banner" style="background-image: url('images/home_banner.jpg');"></div>
@@ -489,6 +407,7 @@
 
 </body>
 </html>
+
 
 
 
