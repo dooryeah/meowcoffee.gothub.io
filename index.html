@@ -3,22 +3,136 @@
 <head>
     <meta charset="UTF-8">
     <title>喵宿咖啡厅 · Meow Inn Café</title>
-    <meta name="viewport" content="width=device-width,initial-scale=1">
+
+    <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+
     <style>
-        body { margin:0; font-family:"Segoe UI",sans-serif; background:#f4f8ff; }
-        .navbar { display:flex; align-items:center; justify-content:space-between; padding:12px 28px; background:#ffffffcc; backdrop-filter:blur(8px); position:fixed; width:100%; top:0; z-index:999; box-shadow:0 2px 8px rgba(0,0,0,0.06); }
-        .navbar img { height:44px; }
-        .nav-links { display:flex; gap:18px; align-items:center; }
-        .nav-links a { text-decoration:none; color:#2f5fa8; font-weight:600; }
-        .nav-auth { display:flex; gap:12px; align-items:center; }
-        .banner { height:320px; background-image:url('images/home_banner.jpg'); background-size:cover; background-position:center; margin-top:70px; border-bottom:4px solid #dbe7ff; }
-        .content { padding:36px; max-width:1100px; margin:0 auto; }
-        .card { background:white; padding:20px; border-radius:14px; box-shadow:0 6px 20px rgba(0,0,0,0.06); margin-bottom:20px; }
-        .players-grid { display:flex; gap:18px; flex-wrap:wrap; justify-content:center; margin-top:12px; }
-        .player-tile { width:120px; text-align:center; background:#fff; padding:12px; border-radius:12px; box-shadow:0 4px 16px rgba(0,0,0,0.06); }
-        .player-tile img { width:80px; height:80px; border-radius:10px; display:block; margin:0 auto 8px; }
-        .join-btn { display:inline-block; padding:10px 18px; background:#6aa6ff; color:#fff; border-radius:10px; text-decoration:none; font-weight:600; }
-        .logout-btn { cursor:pointer; color:#d9534f; font-weight:700; text-decoration:underline; background:none; border:none; padding:0; }
+        body {
+            margin: 0;
+            font-family: "Segoe UI", sans-serif;
+            background: #f4f8ff;
+        }
+
+        /* 顶部导航栏（移动端优化） */
+        .navbar {
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            padding: 10px 18px;
+            background: #ffffffcc;
+            backdrop-filter: blur(10px);
+            position: fixed;
+            width: 100%;
+            top: 0;
+            z-index: 9999;
+            box-shadow: 0 2px 10px rgba(0,0,0,0.05);
+        }
+
+        .navbar img {
+            height: 40px;
+        }
+
+        .nav-links {
+            display: flex;
+            gap: 14px;
+        }
+
+        .nav-links a {
+            text-decoration: none;
+            color: #4a6fa5;
+            font-weight: 600;
+            font-size: 14px;
+        }
+
+        .nav-auth {
+            display: flex;
+            gap: 10px;
+        }
+
+        .nav-auth a {
+            text-decoration: none;
+            color: #4a6fa5;
+            font-weight: 600;
+            font-size: 14px;
+        }
+
+        /* Banner（移动端高度缩小） */
+        .banner {
+            width: 100%;
+            height: 260px;
+            background-size: cover;
+            background-position: center;
+            margin-top: 60px;
+            border-bottom: 4px solid #dbe7ff;
+        }
+
+        /* 内容区（左右留白减少） */
+        .content {
+            padding: 20px;
+            text-align: center;
+            max-width: 900px;
+            margin: 0 auto;
+        }
+
+        .card {
+            background: white;
+            padding: 20px;
+            border-radius: 14px;
+            margin-bottom: 18px;
+            box-shadow: 0 4px 16px rgba(0,0,0,0.08);
+        }
+
+        .card h1, .card h2 {
+            font-size: 20px;
+            margin-bottom: 12px;
+        }
+
+        .card p {
+            font-size: 15px;
+            line-height: 1.6;
+        }
+
+        .join-btn {
+            display: inline-block;
+            margin-top: 16px;
+            padding: 10px 20px;
+            background: #6aa6ff;
+            color: white;
+            border-radius: 10px;
+            text-decoration: none;
+            font-size: 16px;
+        }
+
+        /* 玩家展示（移动端更紧凑） */
+        .players-grid {
+            display: flex;
+            gap: 14px;
+            flex-wrap: wrap;
+            justify-content: center;
+            margin-top: 12px;
+        }
+
+        .player-tile {
+            width: 100px;
+            text-align: center;
+            background: #fff;
+            padding: 10px;
+            border-radius: 12px;
+            box-shadow: 0 4px 16px rgba(0,0,0,0.06);
+            text-decoration: none;
+            color: inherit;
+        }
+
+        .player-tile img {
+            width: 70px;
+            height: 70px;
+            border-radius: 10px;
+            margin-bottom: 6px;
+        }
+
+        .player-tile div {
+            font-size: 14px;
+        }
     </style>
 </head>
 <body>
@@ -407,6 +521,7 @@
 
 </body>
 </html>
+
 
 
 
