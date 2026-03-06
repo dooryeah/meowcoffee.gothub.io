@@ -1,36 +1,21 @@
-// 注册
-function register() {
-    const user = document.getElementById("regUser")?.value;
-    const pass = document.getElementById("regPass")?.value;
-
-    if (!user || !pass) {
-        alert("请输入完整信息");
-        return;
-    }
-
-    if (localStorage.getItem("user_" + user)) {
-        alert("用户名已存在");
-        return;
-    }
-
-    localStorage.setItem("user_" + user, pass);
-    alert("注册成功！");
-    window.location.href = "/meowcoffee.github.io/login.html";
-}
+// 统一密码登录模式
+const MASTER_PASSWORD = "miaosu2024";  // ← 修改成你自己的密码
 
 // 登录
 function login() {
-    const user = document.getElementById("loginUser")?.value;
     const pass = document.getElementById("loginPass")?.value;
 
-    const savedPass = localStorage.getItem("user_" + user);
+    if (!pass) {
+        alert("请输入密码");
+        return;
+    }
 
-    if (savedPass === pass) {
-        localStorage.setItem("loggedInUser", user);
+    if (pass === MASTER_PASSWORD) {
+        localStorage.setItem("loggedInUser", "admin"); // 固定为 admin
         alert("登录成功！");
         window.location.href = "/meowcoffee.github.io/index.html";
     } else {
-        alert("用户名或密码错误");
+        alert("密码错误");
     }
 }
 
@@ -48,6 +33,7 @@ function updateNav() {
         if (auth) auth.style.display = "flex";
     }
 }
+
 
 
 
