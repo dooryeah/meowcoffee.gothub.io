@@ -11,6 +11,15 @@
             background: #f4f8ff;
         }
 
+        body::before {
+            content: "";
+            position: fixed;
+            inset: 0;
+            background: url('images/bg_overlay.jpg') center/cover no-repeat;
+            opacity: 0.15; /* 调整透明度，0~1，值越低越透明 */
+            pointer-events: none;
+            z-index: -1;
+        }
         /* 顶部导航栏 */
         .navbar {
             display: flex;
@@ -534,3 +543,4 @@
 
 </body>
 </html>
+
