@@ -178,9 +178,33 @@
 
         renderAbout();
         renderLinks();
+         // 进入视口淡入
+        const io = new IntersectionObserver((entries) => {
+            entries.forEach(e => {
+                if (e.isIntersecting) {
+                    e.target.classList.add('visible');
+                    io.unobserve(e.target);
+                }
+            });
+        }, { threshold: 0.15 });
+
+        document.querySelectorAll('.fade-up').forEach(el => io.observe(el));
+
+        // 页面跳转淡出
+        document.querySelectorAll('a[href]').forEach(a => {
+            a.addEventListener('click', (e) => {
+                const url = a.getAttribute('href');
+                // 忽略空、锚点、js、下载、新标签
+                if (!url || url.startsWith('#') || url.startsWith('javascript:') || a.target === '_blank') return;
+                e.preventDefault();
+                document.body.classList.add('page-fade-out');
+                setTimeout(() => window.location.href = url, 320);
+            });
+        });
     </script>
 </body>
 </html>
+
 
 
 
