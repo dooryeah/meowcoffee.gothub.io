@@ -593,31 +593,26 @@
 
         <!-- JS -->
     <script src="js/login.js"></script>
-    <script>
-        updateNav();
-
-        function copyQQ() {
-            const qq = "1082948381";
-            navigator.clipboard.writeText(qq).then(() => {
-                alert("已复制 QQ 审核群号：" + qq);
-            });
-        }
-
+        <script>
         // ===== 计时器开始 =====
-        // 自定义计时起点：修改为需要的时间
-        const startTime = new Date("2026-3-10T00:00:00"); // 示例
+        // 推荐写法（带时区，避免 NaN）
+        const startTime = new Date("2026-03-10T00:00:00+08:00");
+        // 兼容写法：
+        // const startTime = new Date(Date.UTC(2026, 2, 10, 0, 0, 0)); // 注意月份从0开始
 
         function updateTimer() {
+            if (isNaN(startTime.getTime())) {
+                console.error("startTime 无法解析，请检查格式");
+                return;
+            }
             const now = new Date();
-            let diff = Math.max(0, now - startTime); // 防止负数
-            const sec = Math.floor(diff / 1000);
+            const diffMs = Math.max(0, now - startTime);
+            const sec = Math.floor(diffMs / 1000);
             const days = Math.floor(sec / 86400);
             const hours = Math.floor((sec % 86400) / 3600);
             const minutes = Math.floor((sec % 3600) / 60);
             const seconds = sec % 60;
-
             const pad2 = (n) => String(n).padStart(2, "0");
-
             document.getElementById("timerValue").innerHTML = `
                 <div class="timer-chip">${days}天</div>
                 <div class="timer-chip">${pad2(hours)}时</div>
@@ -625,13 +620,13 @@
                 <div class="timer-chip">${pad2(seconds)}秒</div>
             `;
         }
-
         updateTimer();
         setInterval(updateTimer, 1000);
         // ===== 计时器结束 =====
     </script>
 </body>
 </html>
+
 
 
 
