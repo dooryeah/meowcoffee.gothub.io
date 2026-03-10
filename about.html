@@ -3,6 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <title>关于 - 喵宿咖啡厅</title>
+    <link rel="stylesheet" href="css/animations.css">
     <style>
         body {
             margin: 0;
@@ -20,7 +21,7 @@
             z-index: -1;
         }
 
-        /* 统一导航栏：Logo 左侧，链接居中 */
+        /* 统一导航栏 */
         .navbar {
             display: grid;
             grid-template-columns: auto 1fr;
@@ -106,7 +107,6 @@
 <body>
 
     <script>
-        // 登录校验（路径按实际登录页位置调整）
         if (!localStorage.getItem("loggedInUser")) {
             window.location.href = "./新建文件夹/login.html";
         }
@@ -122,19 +122,18 @@
     </div>
 
     <div class="content">
-        <div class="card">
+        <div class="card fade-up">
             <h1>关于喵宿</h1>
             <div id="aboutContent" class="about-text"></div>
         </div>
 
-        <div class="card">
+        <div class="card fade-up">
             <h2>其他平台链接</h2>
             <ul id="linkList" class="link-list"></ul>
         </div>
     </div>
 
     <script>
-        // 直接在这里编辑简介与链接
         const ABOUT_TEXT = `孟乃(mengnai123)很早就想玩一个可以玩非常非常久的存档，之前叫身边的朋友试过，不过总是一开始很热情，到后面就慢慢离开，前段时间，偶然遇见一位与他有类似想法的MC搭子(Akari_desu)（就是我们现在的腐竹），于是一拍即合，想着来建立一个服务器。
 
         因为这样的存档时间跨度很大，所以只能是原版档，因为mod档难以更新，但原版对大多数人来说非常枯燥
@@ -172,29 +171,7 @@
 
         renderAbout();
         renderLinks();
-        // 进入视口淡入
-        const io = new IntersectionObserver((entries) => {
-            entries.forEach(e => {
-                if (e.isIntersecting) {
-                    e.target.classList.add('visible');
-                    io.unobserve(e.target);
-                }
-            });
-        }, { threshold: 0.15 });
-
-        document.querySelectorAll('.fade-up').forEach(el => io.observe(el));
-
-        // 页面跳转淡出
-        document.querySelectorAll('a[href]').forEach(a => {
-            a.addEventListener('click', (e) => {
-                const url = a.getAttribute('href');
-                // 忽略空、锚点、js、下载、新标签
-                if (!url || url.startsWith('#') || url.startsWith('javascript:') || a.target === '_blank') return;
-                e.preventDefault();
-                document.body.classList.add('page-fade-out');
-                setTimeout(() => window.location.href = url, 320);
-            });
-        });
     </script>
+    <script src="js/animations.js"></script>
 </body>
 </html>
