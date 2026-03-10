@@ -3,7 +3,6 @@
 <head>
     <meta charset="UTF-8">
     <title>关于 - 喵宿咖啡厅</title>
-    <link rel="stylesheet" href="css/animations.css">
     <style>
         body {
             margin: 0;
@@ -14,14 +13,17 @@
         body::before {
             content: "";
             position: fixed;
-            inset: 0;
-            background: url('images/about_bg.jpg') center/cover no-repeat;
+            top: 0;
+            left: 0;
+            width: 100vw;
+            height: 100vh;
+            background: url('images/about_bg.jpg') center center / cover no-repeat;
             opacity: 0.50;
             pointer-events: none;
             z-index: -1;
         }
 
-        /* 统一导航栏 */
+        /* 统一导航栏：Logo 左侧，链接居中 */
         .navbar {
             display: grid;
             grid-template-columns: auto 1fr;
@@ -107,6 +109,7 @@
 <body>
 
     <script>
+        // 登录校验（路径按实际登录页位置调整）
         if (!localStorage.getItem("loggedInUser")) {
             window.location.href = "./新建文件夹/login.html";
         }
