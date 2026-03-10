@@ -180,10 +180,11 @@
             inset: 0;
             background: rgba(0,0,0,0.55);
             display: flex;
-            align-items: center;
+            align-items: flex-start;
             justify-content: center;
             z-index: 10000;
-            padding: 20px;
+            padding: 90px 20px 20px;
+            overflow-y: auto;
             animation: fadeIn 0.2s ease;
         }
 
@@ -195,12 +196,11 @@
         .modal-content {
             background: white;
             border-radius: 18px;
-            max-width: 1100px;
+            max-width: 560px;
             width: 100%;
-            max-height: 92vh;
-            overflow-y: auto;
             box-shadow: 0 16px 48px rgba(0,0,0,0.25);
             animation: modalSlideIn 0.3s ease;
+            flex-shrink: 0;
         }
 
         @keyframes modalSlideIn {
@@ -212,32 +212,32 @@
             width: 100%;
             display: block;
             border-radius: 18px 18px 0 0;
-            max-height: 640px;
+            max-height: 320px;
             object-fit: cover;
         }
 
         .modal-body {
-            padding: 28px 36px 32px;
+            padding: 20px 24px 24px;
         }
 
         .modal-body h2 {
             text-align: left;
-            margin: 0 0 10px;
+            margin: 0 0 8px;
             color: #2f5fa8;
-            font-size: 28px;
+            font-size: 22px;
         }
 
         .modal-body .modal-tags {
             display: flex;
-            gap: 8px;
+            gap: 6px;
             flex-wrap: wrap;
-            margin-bottom: 18px;
+            margin-bottom: 14px;
         }
 
         .modal-body .ptag {
-            font-size: 14px;
-            padding: 4px 14px;
-            border-radius: 10px;
+            font-size: 12px;
+            padding: 3px 10px;
+            border-radius: 8px;
             background: #eef4ff;
             color: #5a8abf;
             font-weight: 600;
@@ -245,28 +245,28 @@
 
         .modal-body .modal-desc {
             color: #444;
-            line-height: 1.8;
-            font-size: 17px;
+            line-height: 1.7;
+            font-size: 15px;
             white-space: pre-line;
         }
 
         .modal-body .modal-meta {
-            margin-top: 18px;
-            font-size: 15px;
+            margin-top: 14px;
+            font-size: 13px;
             color: #8aa;
         }
 
         .modal-close {
             position: absolute;
-            top: 14px;
-            right: 18px;
-            width: 40px;
-            height: 40px;
+            top: 12px;
+            right: 16px;
+            width: 32px;
+            height: 32px;
             border-radius: 50%;
             border: none;
             background: rgba(255,255,255,0.85);
             color: #555;
-            font-size: 22px;
+            font-size: 18px;
             cursor: pointer;
             display: flex;
             align-items: center;
