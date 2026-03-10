@@ -3,6 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <title>服务器展览 - 喵宿咖啡厅</title>
+    <link rel="stylesheet" href="css/animations.css">
     <style>
         body {
             margin: 0;
@@ -10,7 +11,7 @@
             background: #f4f8ff;
         }
 
-        /* 统一导航栏：Logo 左侧，链接居中 */
+        /* 统一导航栏 */
         .navbar {
             display: grid;
             grid-template-columns: auto 1fr;
@@ -116,7 +117,6 @@
 <body>
 
     <script>
-        // 登录校验
         if (!localStorage.getItem("loggedInUser")) {
             window.location.href = "./新建文件夹/login.html";
         }
@@ -132,21 +132,20 @@
     </div>
 
     <div class="content">
-        <div class="card">
+        <div class="card fade-up">
             <h1>服务器展览</h1>
             <p style="text-align:center; color:#556;">
                 风风光光的喵~
             </p>
         </div>
 
-        <div class="card">
+        <div class="card fade-up">
             <h2>图片列表</h2>
             <div id="gallery" class="gallery"></div>
         </div>
     </div>
 
     <script>
-        // 维护图片列表：在此追加 URL 即可
         const EXHIBITION_IMAGES = [
             "./images/server_1.png",
             "./images/server_2.png",
@@ -167,7 +166,6 @@
             "./images/server_17.png",
         ];
 
-        // 创建并显示放大预览
         function showViewer(src) {
             const backdrop = document.createElement("div");
             backdrop.className = "viewer-backdrop";
@@ -206,7 +204,7 @@
                 const img = document.createElement("img");
                 img.src = src;
                 img.alt = "server image";
-                img.ondblclick = () => showViewer(src); // 双击放大
+                img.ondblclick = () => showViewer(src);
                 div.appendChild(img);
                 gallery.appendChild(div);
             });
@@ -214,5 +212,6 @@
 
         render(EXHIBITION_IMAGES);
     </script>
+    <script src="js/animations.js"></script>
 </body>
 </html>
