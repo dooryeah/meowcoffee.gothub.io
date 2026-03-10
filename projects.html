@@ -179,13 +179,18 @@
             position: fixed;
             inset: 0;
             background: rgba(0,0,0,0.55);
+            z-index: 10000;
+            overflow-y: auto;
+            animation: fadeIn 0.2s ease;
+        }
+
+        .modal-backdrop-inner {
+            min-height: 100%;
             display: flex;
             align-items: center;
             justify-content: center;
-            z-index: 10000;
-            padding: 20px;
-            overflow: hidden;
-            animation: fadeIn 0.2s ease;
+            padding: 80px 40px 40px;
+            box-sizing: border-box;
         }
 
         @keyframes fadeIn {
@@ -198,9 +203,6 @@
             border-radius: 18px;
             max-width: 820px;
             width: 100%;
-            max-height: calc(100vh - 100px);
-            overflow-y: auto;
-            margin-top: 70px;
             box-shadow: 0 16px 48px rgba(0,0,0,0.25);
             animation: modalSlideIn 0.3s ease;
         }
@@ -314,7 +316,6 @@
         </div>
 
         <div class="card fade-up">
-            <!-- 筛选栏 -->
             <div class="filter-bar">
                 <div class="filter-group">
                     <span class="filter-group-label">维度</span>
@@ -331,7 +332,6 @@
                 </div>
             </div>
 
-            <!-- 项目列表 -->
             <div id="projectGrid" class="project-grid"></div>
         </div>
     </div>
@@ -426,18 +426,21 @@
             const backdrop = document.createElement("div");
             backdrop.className = "modal-backdrop";
 
+            // 用内层 div 做 flex 居中，外层做滚动容器
             backdrop.innerHTML = `
-                <div class="modal-content" style="position:relative;">
-                    <button class="modal-close" title="关闭">✕</button>
-                    <img src="${project.image}" alt="${project.name}" onerror="this.src='./images/logo.png'">
-                    <div class="modal-body">
-                        <h2>${project.name}</h2>
-                        <div class="modal-tags">
-                            <span class="ptag">${project.dimension}</span>
-                            <span class="ptag">${project.type}</span>
+                <div class="modal-backdrop-inner">
+                    <div class="modal-content" style="position:relative;">
+                        <button class="modal-close" title="关闭">✕</button>
+                        <img src="${project.image}" alt="${project.name}" onerror="this.src='./images/logo.png'">
+                        <div class="modal-body">
+                            <h2>${project.name}</h2>
+                            <div class="modal-tags">
+                                <span class="ptag">${project.dimension}</span>
+                                <span class="ptag">${project.type}</span>
+                            </div>
+                            <div class="modal-desc">${project.description}</div>
+                            <div class="modal-meta">建造者：${project.author}</div>
                         </div>
-                        <div class="modal-desc">${project.description}</div>
-                        <div class="modal-meta">建造者：${project.author}</div>
                     </div>
                 </div>
             `;
@@ -454,7 +457,7 @@
 
             backdrop.querySelector(".modal-close").addEventListener("click", close);
             backdrop.addEventListener("click", (e) => {
-                if (e.target === backdrop) close();
+                if (e.target === backdrop || e.target.classList.contains("modal-backdrop-inner")) close();
             });
             document.addEventListener("keydown", onKey);
         }
