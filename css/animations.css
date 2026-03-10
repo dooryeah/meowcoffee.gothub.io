@@ -79,12 +79,3 @@ body.page-fade-out {
     transform: scale(0.96);
 }
 
-/* ===== Banner 视差缩放 ===== */
-.banner {
-    transition: transform 0.4s ease;
-    overflow: hidden;
-}
-
-.banner:hover {
-    transform: scale(1.01);
-}
