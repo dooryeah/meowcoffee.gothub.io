@@ -138,30 +138,36 @@
                 padding-left: 4px;
             }
 
-        /* 右下角小型"?"按钮 */
+        /* 右下角隐蔽小按钮 */
         .help-btn {
             position: fixed;
-            right: 20px;
-            bottom: 20px;
-            width: 32px;
-            height: 32px;
+            right: 5px;
+            bottom: 5px;
+            width: 14px;
+            height: 14px;
             border-radius: 50%;
-            background: #4a6fa5;
-            color: #fff;
-            font-size: 18px;
-            font-weight: bold;
+            background: rgba(180, 180, 180, 0.2);
+            color: rgba(150, 150, 150, 0.3);
+            font-size: 9px;
+            font-weight: normal;
             display: flex;
             align-items: center;
             justify-content: center;
             text-decoration: none;
-            box-shadow: 0 2px 8px rgba(0,0,0,0.15);
             z-index: 10000;
-            transition: transform 0.2s, background 0.2s;
+            opacity: 0.25;
+            transition: all 0.3s;
+            cursor: default;
         }
 
             .help-btn:hover {
-                background: #1e4f91;
-                transform: scale(1.1);
+                width: 24px;
+                height: 24px;
+                background: #4a6fa5;
+                color: #fff;
+                font-size: 14px;
+                opacity: 1;
+                cursor: pointer;
             }
     </style>
 </head>
@@ -196,7 +202,7 @@
     </div>
 
     <!-- 右下角"?"按钮 -->
-    <a class="help-btn" href="server-bible.html" title="服务器圣经">?</a>
+    <a class="help-btn" href="server-bible.html">?</a>
 
     <script>
         const ABOUT_TEXT = `孟乃(mengnai123)很早就想玩一个可以玩非常非常久的存档，之前叫身边的朋友试过，不过总是一开始很热情，到后面就慢慢离开，前段时间，偶然遇见一位与他有类似想法的MC搭子(Akari_desu)（就是我们现在的腐竹），于是一拍即合，想着来建立一个服务器。
