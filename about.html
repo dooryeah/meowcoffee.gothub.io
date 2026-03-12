@@ -11,21 +11,21 @@
             background: #f4f8ff;
         }
 
-        body::before {
-            content: "";
-            position: fixed;
-            top: 0;
-            left: 0;
-            width: 100vw;
-            height: 100vh;
-            background-image: url('images/about_bg.jpg');
-            background-position: center center;
-            background-size: cover;
-            background-repeat: no-repeat;
-            opacity: 0.50;
-            pointer-events: none;
-            z-index: -1;
-        }
+            body::before {
+                content: "";
+                position: fixed;
+                top: 0;
+                left: 0;
+                width: 100vw;
+                height: 100vh;
+                background-image: url('images/about_bg.jpg');
+                background-position: center center;
+                background-size: cover;
+                background-repeat: no-repeat;
+                opacity: 0.50;
+                pointer-events: none;
+                z-index: -1;
+            }
 
         /* 统一导航栏 */
         .navbar {
@@ -43,10 +43,10 @@
             box-sizing: border-box;
         }
 
-        .navbar img {
-            height: 48px;
-            filter: drop-shadow(0 0 4px rgba(0,0,0,0.2));
-        }
+            .navbar img {
+                height: 48px;
+                filter: drop-shadow(0 0 4px rgba(0,0,0,0.2));
+            }
 
         .nav-links {
             display: flex;
@@ -54,16 +54,16 @@
             gap: 24px;
         }
 
-        .nav-links a {
-            text-decoration: none;
-            color: #4a6fa5;
-            font-weight: 600;
-            transition: 0.2s;
-        }
+            .nav-links a {
+                text-decoration: none;
+                color: #4a6fa5;
+                font-weight: 600;
+                transition: 0.2s;
+            }
 
-        .nav-links a:hover {
-            color: #1e4f91;
-        }
+                .nav-links a:hover {
+                    color: #1e4f91;
+                }
 
         .content {
             padding: 120px 40px 40px 40px;
@@ -96,17 +96,28 @@
             padding-left: 18px;
         }
 
-        .link-list li {
-            margin: 6px 0;
-            opacity: 0;
-            transform: translateX(-16px);
-            animation: linkSlideIn 0.4s ease forwards;
-        }
+            .link-list li {
+                margin: 6px 0;
+                opacity: 0;
+                transform: translateX(-16px);
+                animation: linkSlideIn 0.4s ease forwards;
+            }
 
-        .link-list li:nth-child(1) { animation-delay: 0.3s; }
-        .link-list li:nth-child(2) { animation-delay: 0.45s; }
-        .link-list li:nth-child(3) { animation-delay: 0.6s; }
-        .link-list li:nth-child(4) { animation-delay: 0.75s; }
+                .link-list li:nth-child(1) {
+                    animation-delay: 0.3s;
+                }
+
+                .link-list li:nth-child(2) {
+                    animation-delay: 0.45s;
+                }
+
+                .link-list li:nth-child(3) {
+                    animation-delay: 0.6s;
+                }
+
+                .link-list li:nth-child(4) {
+                    animation-delay: 0.75s;
+                }
 
         @keyframes linkSlideIn {
             to {
@@ -121,18 +132,44 @@
             transition: color 0.2s, padding-left 0.2s;
         }
 
-        .link-list a:hover {
-            text-decoration: underline;
-            color: #1e4f91;
-            padding-left: 4px;
+            .link-list a:hover {
+                text-decoration: underline;
+                color: #1e4f91;
+                padding-left: 4px;
+            }
+
+        /* 右下角小型"?"按钮 */
+        .help-btn {
+            position: fixed;
+            right: 20px;
+            bottom: 20px;
+            width: 32px;
+            height: 32px;
+            border-radius: 50%;
+            background: #4a6fa5;
+            color: #fff;
+            font-size: 18px;
+            font-weight: bold;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            text-decoration: none;
+            box-shadow: 0 2px 8px rgba(0,0,0,0.15);
+            z-index: 10000;
+            transition: transform 0.2s, background 0.2s;
         }
+
+            .help-btn:hover {
+                background: #1e4f91;
+                transform: scale(1.1);
+            }
     </style>
 </head>
 <body>
 
     <script>
         if (!localStorage.getItem("loggedInUser")) {
-            window.location.href = "./新建文件夹/login.html";
+        window.location.href = "./新建文件夹/login.html";
         }
     </script>
 
@@ -158,6 +195,9 @@
         </div>
     </div>
 
+    <!-- 右下角"?"按钮 -->
+    <a class="help-btn" href="server-bible.html" title="服务器圣经">?</a>
+
     <script>
         const ABOUT_TEXT = `孟乃(mengnai123)很早就想玩一个可以玩非常非常久的存档，之前叫身边的朋友试过，不过总是一开始很热情，到后面就慢慢离开，前段时间，偶然遇见一位与他有类似想法的MC搭子(Akari_desu)（就是我们现在的腐竹），于是一拍即合，想着来建立一个服务器。
 
@@ -169,29 +209,29 @@
         关于服务器：m4开服，1.21.11高版本，群组包含生电和创造两个档，均有快捷备份与回滚功能；创造服另有we和axiom等基础建筑mod。服务器存档定期备份上传云端无需担心丢档，可以接受矿透等轮椅mod，可以接受添加新配方`;
 
         const ABOUT_LINKS = [
-            { name: "mengnai123B站直播间", url: "https://live.bilibili.com/1883379698" },
-            { name: "YuriRinaB站直播间", url: "https://live.bilibili.com/9159035" },
+        { name: "mengnai123B站直播间", url: "https://live.bilibili.com/1883379698" },
+        { name: "YuriRinaB站直播间", url: "https://live.bilibili.com/9159035" },
         ];
 
         function renderAbout() {
-            const aboutEl = document.getElementById("aboutContent");
-            if (aboutEl) aboutEl.textContent = ABOUT_TEXT;
+        const aboutEl = document.getElementById("aboutContent");
+        if (aboutEl) aboutEl.textContent = ABOUT_TEXT;
         }
 
         function renderLinks() {
-            const ul = document.getElementById("linkList");
-            if (!ul) return;
-            ul.innerHTML = "";
-            ABOUT_LINKS.forEach(({ name, url }) => {
-                const li = document.createElement("li");
-                const a = document.createElement("a");
-                a.href = url;
-                a.target = "_blank";
-                a.rel = "noopener noreferrer";
-                a.textContent = name;
-                li.appendChild(a);
-                ul.appendChild(li);
-            });
+        const ul = document.getElementById("linkList");
+        if (!ul) return;
+        ul.innerHTML = "";
+        ABOUT_LINKS.forEach(({ name, url }) => {
+        const li = document.createElement("li");
+        const a = document.createElement("a");
+        a.href = url;
+        a.target = "_blank";
+        a.rel = "noopener noreferrer";
+        a.textContent = name;
+        li.appendChild(a);
+        ul.appendChild(li);
+        });
         }
 
         renderAbout();
