@@ -84,7 +84,7 @@
 
             .gallery-item img {
                 width: 100%;
-                height: auto; /* 保持原始比例 */
+                height: auto;
                 display: block;
             }
 
@@ -94,6 +94,115 @@
                 color: #333;
                 text-align: center;
             }
+
+        /* 音乐播放器 */
+        .music-player {
+            position: fixed;
+            right: 20px;
+            bottom: 20px;
+            z-index: 10000;
+        }
+
+        .music-btn {
+            width: 48px;
+            height: 48px;
+            border-radius: 50%;
+            background: linear-gradient(135deg, #4a6fa5, #1e4f91);
+            border: none;
+            color: #fff;
+            font-size: 20px;
+            cursor: pointer;
+            box-shadow: 0 4px 15px rgba(74, 111, 165, 0.4);
+            transition: transform 0.2s, box-shadow 0.2s;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+        }
+
+            .music-btn:hover {
+                transform: scale(1.1);
+                box-shadow: 0 6px 20px rgba(74, 111, 165, 0.5);
+            }
+
+            .music-btn.playing {
+                animation: pulse 1.5s ease-in-out infinite;
+            }
+
+        @keyframes pulse {
+            0%, 100% { box-shadow: 0 4px 15px rgba(74, 111, 165, 0.4); }
+            50% { box-shadow: 0 4px 25px rgba(74, 111, 165, 0.7); }
+        }
+
+        .music-panel {
+            position: absolute;
+            bottom: 60px;
+            right: 0;
+            background: #fff;
+            border-radius: 12px;
+            box-shadow: 0 4px 20px rgba(0,0,0,0.15);
+            padding: 16px;
+            min-width: 220px;
+            display: none;
+        }
+
+            .music-panel.show {
+                display: block;
+                animation: fadeIn 0.2s ease;
+            }
+
+        @keyframes fadeIn {
+            from { opacity: 0; transform: translateY(10px); }
+            to { opacity: 1; transform: translateY(0); }
+        }
+
+        .music-panel h3 {
+            margin: 0 0 12px;
+            font-size: 14px;
+            color: #4a6fa5;
+        }
+
+        .song-list {
+            list-style: none;
+            padding: 0;
+            margin: 0;
+            max-height: 200px;
+            overflow-y: auto;
+        }
+
+            .song-list li {
+                padding: 8px 12px;
+                border-radius: 6px;
+                cursor: pointer;
+                font-size: 13px;
+                color: #333;
+                transition: background 0.2s;
+                display: flex;
+                align-items: center;
+                gap: 8px;
+            }
+
+                .song-list li:hover {
+                    background: #f0f4ff;
+                }
+
+                .song-list li.active {
+                    background: #e8f0ff;
+                    color: #1e4f91;
+                    font-weight: 600;
+                }
+
+                .song-list li .icon {
+                    font-size: 12px;
+                }
+
+        .now-playing {
+            margin-top: 12px;
+            padding-top: 12px;
+            border-top: 1px solid #eee;
+            font-size: 12px;
+            color: #666;
+            text-align: center;
+        }
     </style>
 </head>
 <body>
@@ -119,11 +228,119 @@
         <div id="gallery" class="gallery"></div>
     </div>
 
+    <!-- 音乐播放器 -->
+    <div class="music-player">
+        <div class="music-panel" id="musicPanel">
+            <h3>🎵 歌曲列表</h3>
+            <ul class="song-list" id="songList"></ul>
+            <div class="now-playing" id="nowPlaying">未播放</div>
+        </div>
+        <button class="music-btn" id="musicBtn" title="音乐播放器">♪</button>
+    </div>
+
+    <audio id="audioPlayer"></audio>
+
     <script>
-        // 在此数组中添加图片，图片会自动按原比例显示并自适应排布
+        // ========== 在此添加歌曲 ==========
+        const SONGS = [
+            { name: 'にび', src: 'music/song1.mp3' },
+            
+            // 继续添加更多歌曲...
+        ];
+        // ==================================
+
+        const audioPlayer = document.getElementById('audioPlayer');
+        const musicBtn = document.getElementById('musicBtn');
+        const musicPanel = document.getElementById('musicPanel');
+        const songList = document.getElementById('songList');
+        const nowPlaying = document.getElementById('nowPlaying');
+
+        let currentIndex = 0;
+        let isPlaying = false;
+
+        // 渲染歌曲列表
+        function renderSongList() {
+            songList.innerHTML = '';
+            SONGS.forEach((song, index) => {
+                const li = document.createElement('li');
+                li.innerHTML = `<span class="icon">♪</span> ${song.name}`;
+                li.onclick = () => playSong(index);
+                if (index === currentIndex && isPlaying) {
+                    li.classList.add('active');
+                }
+                songList.appendChild(li);
+            });
+        }
+
+        // 播放指定歌曲
+        function playSong(index) {
+            if (SONGS.length === 0) return;
+            currentIndex = index;
+            audioPlayer.src = SONGS[index].src;
+            audioPlayer.play();
+            isPlaying = true;
+            updateUI();
+        }
+
+        // 切换播放/暂停
+        function togglePlay() {
+            if (SONGS.length === 0) return;
+            if (isPlaying) {
+                audioPlayer.pause();
+                isPlaying = false;
+            } else {
+                if (!audioPlayer.src) {
+                    playSong(0);
+                } else {
+                    audioPlayer.play();
+                    isPlaying = true;
+                }
+            }
+            updateUI();
+        }
+
+        // 更新界面
+        function updateUI() {
+            musicBtn.textContent = isPlaying ? '❚❚' : '♪';
+            musicBtn.classList.toggle('playing', isPlaying);
+            nowPlaying.textContent = isPlaying ? `正在播放: ${SONGS[currentIndex].name}` : '已暂停';
+            renderSongList();
+        }
+
+        // 歌曲播放结束，自动下一首
+        audioPlayer.onended = () => {
+            currentIndex = (currentIndex + 1) % SONGS.length;
+            playSong(currentIndex);
+        };
+
+        // 切换面板显示
+        musicBtn.onclick = (e) => {
+            if (e.shiftKey || e.ctrlKey) {
+                musicPanel.classList.toggle('show');
+            } else {
+                togglePlay();
+            }
+        };
+
+        // 右键打开面板
+        musicBtn.oncontextmenu = (e) => {
+            e.preventDefault();
+            musicPanel.classList.toggle('show');
+        };
+
+        // 点击外部关闭面板
+        document.addEventListener('click', (e) => {
+            if (!e.target.closest('.music-player')) {
+                musicPanel.classList.remove('show');
+            }
+        });
+
+        renderSongList();
+
+        // ========== 图片画廊 ==========
         const BIBLE_IMAGES = [
             { src: 'images/bible_1.jpg', caption: '' },
-            // 继续添加更多图片...
+            
         ];
 
         function renderGallery() {
@@ -157,4 +374,3 @@
     <script src="js/animations.js"></script>
 </body>
 </html>
-
