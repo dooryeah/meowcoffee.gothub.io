@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>·şÎñÆ÷Ê¥¾­ - ß÷ËŞ¿§·ÈÌü</title>
+    <title>æœåŠ¡å™¨åœ£ç» - å–µå®¿å’–å•¡å…</title>
     <link rel="stylesheet" href="css/animations.css">
     <style>
         body {
@@ -62,7 +62,7 @@
             margin-bottom: 24px;
         }
 
-        /* ×ÔÊÊÓ¦Í¼Æ¬Íø¸ñ */
+        /* è‡ªé€‚åº”å›¾ç‰‡ç½‘æ ¼ */
         .gallery {
             display: grid;
             grid-template-columns: repeat(auto-fill, minmax(280px, 1fr));
@@ -84,7 +84,7 @@
 
             .gallery-item img {
                 width: 100%;
-                height: auto; /* ±£³ÖÔ­Ê¼±ÈÀı */
+                height: auto; /* ä¿æŒåŸå§‹æ¯”ä¾‹ */
                 display: block;
             }
 
@@ -100,32 +100,32 @@
 
     <script>
         if (!localStorage.getItem("loggedInUser")) {
-            window.location.href = "./ĞÂ½¨ÎÄ¼ş¼Ğ/login.html";
+            window.location.href = "./æ–°å»ºæ–‡ä»¶å¤¹/login.html";
         }
     </script>
 
     <div class="navbar">
         <img src="./images/logo.png" alt="Logo">
         <div class="nav-links">
-            <a href="index.html">Ö÷Ò³</a>
-            <a href="server-exhibition.html">·şÎñÆ÷Õ¹ÀÀ</a>
-            <a href="projects.html">¹¤³ÌÏîÄ¿</a>
-            <a href="about.html">¹ØÓÚ</a>
+            <a href="index.html">ä¸»é¡µ</a>
+            <a href="server-exhibition.html">æœåŠ¡å™¨å±•è§ˆ</a>
+            <a href="projects.html">å·¥ç¨‹é¡¹ç›®</a>
+            <a href="about.html">å…³äº</a>
         </div>
     </div>
 
     <div class="content">
-        <h1>·şÎñÆ÷Ê¥¾­</h1>
+        <h1>æœåŠ¡å™¨åœ£ç»</h1>
         <div id="gallery" class="gallery"></div>
     </div>
 
     <script>
-        // ÔÚ´ËÊı×éÖĞÌí¼ÓÍ¼Æ¬£¬Í¼Æ¬»á×Ô¶¯°´Ô­±ÈÀıÏÔÊ¾²¢×ÔÊÊÓ¦ÅÅ²¼
+        // åœ¨æ­¤æ•°ç»„ä¸­æ·»åŠ å›¾ç‰‡ï¼Œå›¾ç‰‡ä¼šè‡ªåŠ¨æŒ‰åŸæ¯”ä¾‹æ˜¾ç¤ºå¹¶è‡ªé€‚åº”æ’å¸ƒ
         const BIBLE_IMAGES = [
-            { src: 'images/bible_1.jpg', caption: 'Ê¾ÀıÍ¼Æ¬1' },
-            { src: 'images/bible_2.jpg', caption: 'Ê¾ÀıÍ¼Æ¬2' },
-            { src: 'images/bible_3.jpg', caption: 'Ê¾ÀıÍ¼Æ¬3' },
-            // ¼ÌĞøÌí¼Ó¸ü¶àÍ¼Æ¬...
+            { src: 'images/bible_1.jpg', caption: 'ç¤ºä¾‹å›¾ç‰‡1' },
+            { src: 'images/bible_2.jpg', caption: 'ç¤ºä¾‹å›¾ç‰‡2' },
+            { src: 'images/bible_3.jpg', caption: 'ç¤ºä¾‹å›¾ç‰‡3' },
+            // ç»§ç»­æ·»åŠ æ›´å¤šå›¾ç‰‡...
         ];
 
         function renderGallery() {
@@ -138,7 +138,7 @@
 
                 const img = document.createElement('img');
                 img.src = src;
-                img.alt = caption || '·şÎñÆ÷Ê¥¾­Í¼Æ¬';
+                img.alt = caption || 'æœåŠ¡å™¨åœ£ç»å›¾ç‰‡';
                 img.loading = 'lazy';
 
                 item.appendChild(img);
